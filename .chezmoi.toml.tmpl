@@ -1,0 +1,30 @@
+{{- $email := "" -}}
+{{- if (hasKey . "email") -}}
+{{-   $email = .email -}}
+{{- else -}}
+{{-   $email = promptString "email" "personseb@wospe.fr" -}}
+{{- end -}}
+
+{{- $type := "" -}}
+{{- if (hasKey . "type") -}}
+{{-   $type = .type -}}
+{{- else -}}
+{{-   $type = promptString "type (personnal|work)" "personnal" -}}
+{{- end -}}
+
+{{- $git_user := "" -}}
+{{- if (hasKey . "git_user") -}}
+{{-   $git_user = .git_user -}}
+{{- else -}}
+{{-   $git_user = promptString "git user" "ka2er" -}}
+{{- end -}}
+
+encryption = "gpg"
+[gpg]
+	recipient = "personseb@wospe.fr"
+
+[data]
+	type = {{ $type | quote }}
+	git_user = {{ $git_user | quote }}
+	email = {{ $email | quote }}
+	gpg_pub_key_id = "64F561EE8FC18BD537F97B5AA1080DFFB414E214"
