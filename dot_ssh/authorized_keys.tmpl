@@ -1,3 +1,7 @@
+{{ if eq .type "personnal" }}
+
 {{ range (gitHubKeys "ka2er") -}}
 {{   .Key }}
 {{ end -}}
+
+{{ end }}
