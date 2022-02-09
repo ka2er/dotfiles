@@ -6,11 +6,15 @@
 [user]
 	name = {{ .git_user }}
 	email = {{ .email }}
+{{ if eq .type "personnal" }}
 	signingkey = {{ .gpg_pub_key_id }}
+
 [commit]
 	gpgsign = true
 [tag]
 	gpgSign = true
+{{ end }}
+
 [alias]
 	di = diff
 	st = status
